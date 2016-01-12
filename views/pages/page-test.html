@@ -6,8 +6,9 @@
                 
                 <div class="card">
                     <div class="card-header">
-                        <h2><i class="fa fa-clock-o"></i> Vraag 1</h2>
-                        <h3>Hoeveel tijd bent u per dag kwijt aan (gedachten over) de geluiden?</h3>
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 1<br><small>Hoeveel tijd bent u per dag kwijt aan (gedachten over) de geluiden?</small></h4>
+                        </div>
                     </div>
                     <div class="card-body card-padding">
                         <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.a" data-ng-init="dataN.a = '2'" min="0" max="4" ></md-slider>
@@ -17,8 +18,9 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h2><i class="fa fa-volume-up"></i> Vraag 2</h2>
-                        <h3>In welke mate bent u gefocust op de geluiden?</h3>
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 2<br><small>In welke mate bent u gefocust op de geluiden?</small></h4>
+                        </div>
                     </div>
                     <div class="card-body card-padding">
                         <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.b" data-ng-init="dataN.b = '2'" min="0" max="4"></md-slider>
@@ -28,8 +30,9 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h2><i class="fa fa-microphone-slash"></i> Vraag 3</h2>
-                        <h3>In welke mate ervaart u hinder bij het horen van de geluiden?</h3>
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 3<br><small>In welke mate ervaart u hinder bij het horen van de geluiden?</small></h4>
+                        </div>
                     </div>
                     <div class="card-body card-padding">
                         <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.c" data-ng-init="dataN.c = '2'" min="0" max="4"></md-slider>
@@ -39,8 +42,9 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h2><i class="fa fa-microphone-slash"></i> Vraag 4</h2>
-                        <h3>Hoeveel moeite heeft u de afgelopen week gedaan om uw aandacht te richten op iets anders dan misofoniegeluiden?</h3>
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 4<br><small>Hoe heftig is uw gevoel van irritatie/agressie bij het horen van de geluiden?</small></h4>
+                        </div>
                     </div>
                     <div class="card-body card-padding">
                         <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.d" data-ng-init="dataN.d = '2'" min="0" max="4"></md-slider>
@@ -50,11 +54,72 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h2><i class="fa fa-microphone-slash"></i> Vraag 5</h2>
-                        <h3>In welke mate slaagde u de afgelopen week er in om uw aandacht te richten op iets anders dan misofoniegeluiden?</h3>
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 5<br><small>In welke mate voelt u zich machteloos door de geluiden?</small></h4>
+                        </div>
                     </div>
                     <div class="card-body card-padding">
                         <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.e" data-ng-init="dataN.e = '2'" min="0" max="4"></md-slider>
+                        <p><i>0: Niet<br>1: Licht<br>2: Matig<br>3: Ernstig<br>4: Extreem </i></p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 6<br><small>In welke mate lijdt u onder de geluiden?</small></h4>
+                        </div>
+                    </div>
+                    <div class="card-body card-padding">
+                        <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.f" data-ng-init="dataN.f = '2'" min="0" max="4"></md-slider>
+                        <p><i>0: Niet<br>1: Licht<br>2: Matig<br>3: Ernstig<br>4: Extreem </i></p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 7<br><small>In welke mate lijdt u onder het vermijden van de geluiden?</small></h4>
+                        </div>
+                    </div>
+                    <div class="card-body card-padding">
+                        <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.g" data-ng-init="dataN.g = '2'" min="0" max="4"></md-slider>
+                        <p><i>0: Niet<br>1: Licht<br>2: Matig<br>3: Ernstig<br>4: Extreem </i></p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 8<br><small>In welke mate beperken de geluiden uw dagelijks leven (werk, huishouden, etc.)?</small></h4>
+                        </div>
+                    </div>
+                    <div class="card-body card-padding">
+                        <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.h" data-ng-init="dataN.h = '2'" min="0" max="4"></md-slider>
+                        <p><i>0: Niet<br>1: Licht<br>2: Matig<br>3: Ernstig<br>4: Extreem </i></p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 9<br><small>In welke mate gaat u bepaalde plekken of situaties uit de weg vanwege de geluiden?</small></h4>
+                        </div>
+                    </div>
+                    <div class="card-body card-padding">
+                        <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.i" data-ng-init="dataN.i = '2'" min="0" max="4"></md-slider>
+                        <p><i>0: Niet<br>1: Licht<br>2: Matig<br>3: Ernstig<br>4: Extreem </i></p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-overlay">
+                            <h4><i class="fa fa-sliders"></i> Vraag 10<br><small>In welke mate kunt u uw aandacht verleggen tijdens het horen van de geluiden?</small></h4>
+                        </div>
+                    </div>
+                    <div class="card-body card-padding">
+                        <md-slider md-discrete aria-label="Amisos test" data-ng-model="dataN.j" data-ng-init="dataN.j = '2'" min="0" max="4"></md-slider>
                         <p><i>0: Altijd<br>1: Meestal (75%)<br>2: Soms wel, soms niet (50%)<br>3: Zelden (25%)<br>4: Nooit </i></p>
                     </div>
                 </div>
