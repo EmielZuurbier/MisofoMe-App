@@ -1,0 +1,137 @@
+<div class="custom-card-profile">
+    <div class="card-body">
+        <img class="card-image card-image-round" src="http://placehold.it/100x100"/>
+        <h2>Jan Hertogh</h2>
+        <p>dagen app gebruikt: 30 | oefeningen voltooid: 26</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa fa-user"></i> Gegevens</h3>
+                </div>
+                <div class="card-body card-padding">
+                    <ul>
+                        <li>Naam: Jan Hertogh</li>
+                        <li>Email: jan@janhertogh.nl</li>
+                        <li>Wachtwoord: &#8226;&#8226;&#8226;&#8226;&#8226;&#8226;</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fa fa-puzzle-piece"></i> Oefeningen actief</h3>
+                </div>
+                <div class="card-body card-padding">
+                    <ul>
+                        <li data-ng-repeat="card in cards | filter:{active: true}">
+                            {{ card.name }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <form role="form" class="form-horizontal">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fa fa-gear"></i> Misofonie Instellingen</h3>
+                    </div>
+                    <div class="card-body card-padding">
+                        <span>Algemeen</span>
+                        <fieldset>
+                            <md-switch data-ng-model="setting.a" aria-label="Switch 1" data-ng-init="setting = settings">
+                                Ik heb zelf misofonie
+                            </md-switch>
+                        </fieldset>
+                        <span data-ng-show="setting.a">Voorkeuren</span>
+                        <h5 data-ng-show="setting.a">Vergeleken met anderen ben ik gevoelig voor:</h5>
+                        <fieldset data-ng-show="setting.a" data-ng-init="settingPref = settingsPref">
+                            <md-checkbox data-ng-model="settingPref[0]" data-ng-true-value="'eet'" data-ng-false-value="''" aria-label="Checkbox" >
+                                Eetgeluiden
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="settingPref[1]" data-ng-true-value="'nasaal'" data-ng-false-value="''" aria-label="Checkbox" >
+                                Nasale Geluiden
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="settingPref[2]" data-ng-true-value="'keel'" data-ng-false-value="''" aria-label="Checkbox" >
+                                Keelgeluiden
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="settingPref[3]" data-ng-true-value="'bepaalde'" data-ng-false-value="''" aria-label="Checkbox" >
+                                Bepaalde Klanken
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="settingPref[4]" data-ng-true-value="'herhaaldelijk'" data-ng-false-value="''" aria-label="Checkbox" >
+                                Herhaaldelijke Tikken
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="settingPref[5]" data-ng-true-value="'geritsel'" data-ng-false-value="''" aria-label="Checkbox" >
+                                Geritsel
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="settingPref[6]" data-ng-true-value="'omgeving'" data-ng-false-value="''" aria-label="Checkbox" >
+                                Omgevingsgeluiden
+                            </md-checkbox>
+                        </fieldset>
+                        <br>
+                        <h5 data-ng-show="setting.a">Welke emoties roepen deze geluiden bij u op?</h5>
+                        <fieldset data-ng-show="setting.a">
+                            <md-checkbox data-ng-model="setting.b" aria-label="Checkbox" data-ng-true-value="'irritatie'">
+                                Irritatie
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="setting.c" aria-label="Checkbox" data-ng-true-value="'woede'">
+                                Woede
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="setting.d" aria-label="Checkbox" data-ng-true-value="'walging'">
+                                Walging
+                            </md-checkbox>
+                            <md-checkbox data-ng-model="setting.e" aria-label="Checkbox">
+                                Anders, namelijk:
+                            </md-checkbox>
+                            <md-input-container class="md-block">
+                                <textarea data-ng-show="setting.a" data-ng-model="setting.f" class="form-control" rows="5" id="comment" aria-label="textarea"></textarea>
+                            </md-input-container>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fa fa-gear"></i> Screening Instellingen</h3>
+                    </div>
+                    <div class="card-body card-padding">
+                        <span>Hoe vaak wilt u de volgende testen uitvoeren?</span>
+                        <fieldset>
+                            <md-input-container>
+                                <label>Amisos</label>
+                                <md-select data-ng-model="setting.g">
+                                    <md-option value="Dagelijks">Dagelijks</md-option>
+                                    <md-option value="Wekelijks">Wekelijks</md-option>
+                                    <md-option value="Maandelijks">Maandelijks</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-input-container>
+                                <label>MoodMeter</label>
+                                <md-select data-ng-model="setting.h">
+                                    <md-option value="3x per dag">3x per dag</md-option>
+                                    <md-option value="2x per dag">2x per dag</md-option>
+                                    <md-option value="Dagelijks">Dagelijks</md-option>
+                                    <md-option value="Wekelijks">Wekelijks</md-option>
+                                    <md-option value="Maandelijks">Maandelijks</md-option>
+                                </md-select>
+                            </md-input-container>
+                            <md-switch data-ng-model="setting.i" aria-label="Switch 1">
+                                Mag het AMC gebruik<br> maken van uw gegevens?
+                            </md-switch>
+                        </fieldset>
+                    </div>
+                    <div class="card-footer">
+                       
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                         <md-button type="submit" class="btn-blue btn-block" data-ng-click="saveSettings(setting)">Opslaan</md-button>
+                    </div>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">      
+
+    <div class="card" index="{{$index}}" data-ng-repeat="card in cards | filter: {active: true}">
+        <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
+            <div class="card-header-overlay">
+                <h4><i class="{{ card.icon }}"></i> {{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
+                <div class="card-header-icon">
+                    <i data-ng-click="card.show=!card.show" class="fa fa-chevron-down" data-ng-class="{'down': !card.show, 'up': card.show}"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card-body card-padding" data-ng-show="card.show">
+            <p>{{ card.content }}</p>
+            <div class="card-template" data-ng-if="card.template" data-ng-include="card.url"></div>
+        </div>
+        <div class="card-footer card-padding" data-ng-show="card.show">
+            <div class="card-footer-left">
+                <like-dislike class="{{ card.footer }}" info="card"></like-dislike>
+            </div>
+            <div class="card-footer-right" data-ng-show="card.show">
+                <add-to-collection info="card"></add-to-collection>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card">
+        <a href="#/bibliotheek">
+            <div class="card-body card-add">
+                <i class="fa fa-plus"></i>
+            </div>
+        </a>
+    </div>
+            
+            <!-- REPEAT CARDSACTIVE -->
+<!--
+            <div class="card-view" data-ng-repeat="card in cards.active track by $index" >
+                <div data-ng-include="card.url"></div>
+            </div>
+-->
+            
+
+</div>

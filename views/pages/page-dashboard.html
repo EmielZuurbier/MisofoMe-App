@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            
+            <!-- REPEAT CARDSACTIVE -->
+            <div class="card" data-ng-repeat="card in cards | filter:{type: 'graph'} track by card.id">
+                <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
+                    <div class="card-header-overlay">
+                        <h4><i class="{{ card.icon }}"></i> {{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
+                        <div class="card-header-icon">
+                            <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body card-padding">
+                    <p>{{ card.content }}</p>
+                    <div class="card-template" data-ng-if="card.template" data-ng-include="card.url"></div>
+                </div>
+                <div class="card-footer card-padding" data-ng-show="card.show">
+                    <div class="card-footer-left">
+                        <like-dislike class="{{ card.footer }}" info="card"></like-dislike>
+                    </div>
+                    <div class="card-footer-right" data-ng-show="card.show">
+                        <add-to-collection info="card"></add-to-collection>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

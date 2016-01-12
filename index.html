@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MisofoMe</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="author" content="Emiel Zuurbier, Sjoerd Roders, Jelle Bot">
+        <meta name="description" content="App voor Misofonie">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css"/>
+        <link rel="stylesheet" href="script/libs/angular-chart.js/dist/angular-chart.min.css"/>                      
+        <link rel="stylesheet" href="style/angular-material.css"/>
+        <link rel="stylesheet" href="style/style.css"/>
+        <link rel="icon" href="media/MisofoMeicon2.svg">
+        <!-- SCRIPTS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>                  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>         
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>             
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>          
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-animate.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-touch.min.js"></script>    
+        <script src="script/libs/Chart.js/Chart.js"></script>   
+        <script src="script/libs/angular-chart.js/dist/angular-chart.min.js"></script>                               
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
+        <script src="script/libs/angular-dragdrop-master/src/angular-dragdrop.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>              
+        
+    </head>
+    
+    <body data-ng-app="misofonieApp">
+        <!--  data-ng-swipe-left="navOpen = false" data-ng-swipe-right="navOpen = true" -->
+        <div data-ng-controller="mainController">
+            
+            <nav data-ng-show="navOpen">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="nav-header">
+                            <a data-ng-click="navOpen=!navOpen; go('/instellingen')" data-ng-class="getClass('/instellingen')" >
+                                <p class="nav-header-name">Jan Hertogh</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="nav-list">
+                            <ul>
+                                <li><a data-ng-click="navOpen=!navOpen; go('/collectie')" data-ng-class="getClass('/collectie')" ><i class="fa fa-list"></i> Collectie</a></li>
+                                <li><a data-ng-click="navOpen=!navOpen; go('/bibliotheek')" data-ng-class="getClass('/bibliotheek')" ><i class="fa fa-puzzle-piece"></i> Oefeningen</a></li>
+                                <li><a data-ng-click="navOpen=!navOpen; go('/test')" data-ng-class="getClass('/test')" ><i class="fa fa-stethoscope"></i> Amisos</a></li>
+                                <li><a data-ng-click="navOpen=!navOpen; go('/dashboard')" data-ng-class="getClass('/dashboard')" ><i class="fa fa-area-chart"></i> Resultaten</a></li>
+                                <li><a data-ng-click="navOpen=!navOpen; go('/instellingen')" data-ng-class="getClass('/instellingen')" ><i class="fa fa-gear"></i> Instellingen</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-bottom">
+                    <div class="container-fluid">
+                        <span>
+                            <p>In samenwerking met:</p>
+                            <img class="img-responsive" src="media/amc.png"/>
+                        </span>
+                    </div>
+                </div>
+            </nav>
+
+            <header class="header">
+                <div id="nav-button" data-ng-click="navOpen=!navOpen" data-ng-hide="pageName === 'Oefening'">
+                    <div id="nav-icon" data-ng-class="{'open': navOpen}">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                
+                <div class="header-back" data-ng-show="pageName === 'Oefening'">
+                    <a href="#/bibliotheek">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                </div>
+
+                <div class="header-title" data-ng-hide="search" data-ng-class="{'search':search}">
+                    <span>{{ pageName }}</span>
+                </div>
+
+                <div class="header-search" data-ng-class="{'search':search}">
+                    <md-button data-ng-class="{'active':!sorter}" data-ng-disabled="sorter" data-ng-click="search=!search">
+                        <i class="fa fa-search"></i>
+                    </md-button>
+                    <label for="search" data-ng-show="search">Zoek</label>
+                    <input name="search" data-ng-show="search" type="text" ng-model="searchInput">
+                </div>
+
+                <div class="header-options" ng-controller="PositionDemoCtrl as ctrl">
+                    <md-menu md-position-mode="target-right target">
+                        <md-button data-ng-class="{'active':!sorter}" data-ng-disabled="sorter" aria-label="Open demo menu" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
+                            <i class="fa fa-ellipsis-v"></i>
+                        </md-button>
+                        <md-menu-content width="4">
+                            <md-menu-item>
+                                <p><strong>Sorteer op waardering:</strong></p>
+                            </md-menu-item>
+                            <md-menu-divider></md-menu-divider>
+                            <md-menu-item>
+                                <md-button data-ng-click="sort('-likes')"> 
+                                   <p><i class="fa fa-sort-amount-desc"></i> Hoog - Laag</p>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button data-ng-click="sort('likes')"> 
+                                   <p><i class="fa fa-sort-amount-asc"></i> Laag - Hoog</p>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button data-ng-click="sort('null')"> 
+                                   <p><i class="fa fa-random"></i> Nieuwste</p>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button data-ng-click="sortSort(true)"> 
+                                   <p><i class="fa fa-random"></i> Toegevoegde</p>
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </header>
+            
+            <main data-ng-view class="view" data-ng-disabled="navOpen" data-ng-class="{'open': navOpen}" autoscroll="true"></main>
+            
+        </div>
+        
+        <!-- MODULES -->
+        <script src="script/app.js"></script>
+        <!-- SERVICES -->
+        <script src="script/services/service.js"></script>
+        <!-- CONTROLLERS -->
+        <script src="script/controllers/mainController.js"></script>
+        <!-- DIRECTIVES -->
+        <script src="script/directives/add.js"></script>
+        <script src="script/directives/like.js"></script>
+        <script src="script/directives/move.js"></script>
+
+    </body>
+    
+</html>
