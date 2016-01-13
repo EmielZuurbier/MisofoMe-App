@@ -6,8 +6,6 @@
         <md-tab-body>
             
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
                         
 <!--
                         <div data-ng-show="settings.a" class="card card-recommended">
@@ -46,31 +44,31 @@
 -->
                             
                         
-                        <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter: searchInput | orderBy: sorteer track by card.id">
-                            <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
-                                <div class="card-header-overlay">
-                                    <h4>{{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
-                                    <div class="card-header-icon">
-                                        <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body card-padding">
-                                <p>{{ card.desc }}</p>
-                            </div>
-                            <div class="card-footer card-padding">
-                                <div class="card-footer-left">
-                                    <like-dislike info="card"></like-dislike>
-                                </div>
-                                <div class="card-footer-right">
-                                    <add-to-collection info="card"></add-to-collection>
-                                    <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
-                                </div>
+                <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter: searchInput | orderBy: sorteer track by card.id">
+                    <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
+                        <div class="card-header-overlay">
+                            <h4><i class="{{ card.icon }}"></i> {{ card.title }}</h4>
+                            <div class="card-header-icon">
+                                <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="card-body card-padding">
+                        <p><small>{{ card.category[0] | uppercase }}<br>
+                        Toegevoegd door: {{ card.author }}</small></p>
+                        <p>{{ card.desc }}</p>
+                    </div>
+                    <div class="card-footer card-padding">
+                        <div class="card-footer-left">
+                            <like-dislike info="card"></like-dislike>
+                        </div>
+                        <div class="card-footer-right">
+                            <add-to-collection info="card"></add-to-collection>
+                            <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
         </md-tab-body>
@@ -83,35 +81,33 @@
         <md-tab-body>
 
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
                        
-                        <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter:{category: 'beweging'} | filter:searchInput track by card.id">
-                            <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
-                                <div class="card-header-overlay">
-                                    <h4>{{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
-                                    <div class="card-header-icon">
-                                        <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body card-padding">
-                                <p>{{ card.desc }}</p>
-                            </div>
-                            <img class="card-image" data-ng-src="{{ card.thumb }}"/>
-                            <div class="card-footer card-padding">
-                                <div class="card-footer-left">
-                                    <like-dislike info="card"></like-dislike>
-                                </div>
-                                <div class="card-footer-right">
-                                    <add-to-collection info="card"></add-to-collection>
-                                    <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
-                                </div>
+                <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter:{category: 'beweging'} | filter:searchInput track by card.id">
+                    <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
+                        <div class="card-header-overlay">
+                            <h4><i class="{{ card.icon }}"></i>{{ card.title }}</h4>
+                            <div class="card-header-icon">
+                                <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                             </div>
                         </div>
-                            
+                    </div>
+                    <div class="card-body card-padding">
+                        <p><small>{{ card.category[0] | uppercase }}<br>
+                        Toegevoegd door: {{ card.author }}</small></p>
+                        <p>{{ card.desc }}</p>
+                    </div>
+                    <img class="card-image" data-ng-src="{{ card.thumb }}"/>
+                    <div class="card-footer card-padding">
+                        <div class="card-footer-left">
+                            <like-dislike info="card"></like-dislike>
+                        </div>
+                        <div class="card-footer-right">
+                            <add-to-collection info="card"></add-to-collection>
+                            <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
         </md-tab-body>
@@ -123,36 +119,34 @@
         </md-tab-label>
         <md-tab-body>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">        
+            <div class="container">      
                             
-                        <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter:{category: 'concentratie'} | filter:searchInput track by card.id">
-                            <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
-                                <div class="card-header-overlay">
-                                    <h4>{{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
-                                    <div class="card-header-icon">
-                                        <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body card-padding">
-                                <p>{{ card.desc }}</p>
-                            </div>
-                            <img class="card-image" data-ng-src="{{ card.thumb }}"/>
-                            <div class="card-footer card-padding">
-                                <div class="card-footer-left">
-                                    <like-dislike info="card"></like-dislike>
-                                </div>
-                                <div class="card-footer-right">
-                                    <add-to-collection info="card"></add-to-collection>
-                                    <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
-                                </div>
+                <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter:{category: 'concentratie'} | filter:searchInput track by card.id">
+                    <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
+                        <div class="card-header-overlay">
+                            <h4><i class="{{ card.icon }}"></i> {{ card.title }}</h4>
+                            <div class="card-header-icon">
+                                <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                             </div>
                         </div>
-                            
+                    </div>
+                    <div class="card-body card-padding">
+                        <p><small>{{ card.category[0] | uppercase }}<br>
+                        Toegevoegd door: {{ card.author }}</small></p>
+                        <p>{{ card.desc }}</p>
+                    </div>
+                    <img class="card-image" data-ng-src="{{ card.thumb }}"/>
+                    <div class="card-footer card-padding">
+                        <div class="card-footer-left">
+                            <like-dislike info="card"></like-dislike>
+                        </div>
+                        <div class="card-footer-right">
+                            <add-to-collection info="card"></add-to-collection>
+                            <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
+                        </div>
                     </div>
                 </div>
+                            
             </div>
             
         </md-tab-body>
@@ -165,35 +159,33 @@
         <md-tab-body>
 
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
                             
-                        <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter:{category: 'geluid'} | filter:searchInput track by card.id">
-                            <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
-                                <div class="card-header-overlay">
-                                    <h4>{{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
-                                    <div class="card-header-icon">
-                                        <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body card-padding">
-                                <p>{{ card.desc }}</p>
-                            </div>
-                            <img class="card-image" data-ng-src="{{ card.thumb }}"/>
-                            <div class="card-footer card-padding">
-                                <div class="card-footer-left">
-                                    <like-dislike info="card"></like-dislike>
-                                </div>
-                                <div class="card-footer-right">
-                                    <add-to-collection info="card"></add-to-collection>
-                                    <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
-                                </div>
+                <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter:{category: 'geluid'} | filter:searchInput track by card.id">
+                    <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
+                        <div class="card-header-overlay">
+                            <h4><i class="{{ card.icon }}"></i> {{ card.title }}</h4>
+                            <div class="card-header-icon">
+                                <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                             </div>
                         </div>
-                            
+                    </div>
+                    <div class="card-body card-padding">
+                        <p><small>{{ card.category[0] | uppercase }}<br>
+                        Toegevoegd door: {{ card.author }}</small></p>
+                        <p>{{ card.desc }}</p>
+                    </div>
+                    <img class="card-image" data-ng-src="{{ card.thumb }}"/>
+                    <div class="card-footer card-padding">
+                        <div class="card-footer-left">
+                            <like-dislike info="card"></like-dislike>
+                        </div>
+                        <div class="card-footer-right">
+                            <add-to-collection info="card"></add-to-collection>
+                            <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
+                        </div>
                     </div>
                 </div>
+                            
             </div>
 
         </md-tab-body>

@@ -2,6 +2,14 @@
 
 app.controller('mainController', ['$scope', 'data', '$routeParams', '$location', '$mdToast', '$mdDialog', '$sce',  function ($scope, data, $routeParams, $location, $mdToast, $mdDialog, $sce) {
     "use strict";
+    
+    var toastShow = function (content) {
+        $mdToast.show({
+            template: '<md-toast><span flex>' + content + '</span></md-toast>',
+            hideDelay: 1800,
+            position: "top right"
+        });
+    };
         
     $scope.go = function (path) {
         $location.path(path);
@@ -21,7 +29,35 @@ app.controller('mainController', ['$scope', 'data', '$routeParams', '$location',
     $scope.cardsParam = data.cards[$routeParams.id];
     $scope.settings = data.settings;
     $scope.settingsPref = data.settingsPref;
-
+    $scope.user = data.user;
+    
+    $scope.stressRecording = data.results.stressRecording;
+    
+    $scope.oefeningAdd = function (title, category, tags, content) {
+        var d = new Date();
+        data.cards.push({
+            name: title,
+            active: false,
+            type: "exercise",
+            author: "user",
+            likes: 0,
+            dislikes: 0,
+            liked: false,
+            disliked: false,
+            id: data.cards.length,
+            category: [category],
+            tags: [tags],
+            icon: "fa fa-user",
+            title: title,
+            desc: content,
+            content: content,
+            date: d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear(),
+            show: false
+        });
+        toastShow('Oefening aangemaakt');
+        $location.path('/bibliotheek');
+    };
+    
     $scope.random = Math.floor(Math.random() * 10);
     
     console.log($scope.random);
@@ -36,6 +72,8 @@ app.controller('mainController', ['$scope', 'data', '$routeParams', '$location',
         });
         data.results.amiData[1] = data.results.amiData[0];
         data.results.amiData[0] = $scope.newAmiData;
+        
+        console.log($scope.newAmiData);
         
         $scope.newamiTotal = $scope.newAmiData.reduce(function (a, b) {
             return a + b;
@@ -70,16 +108,10 @@ app.controller('mainController', ['$scope', 'data', '$routeParams', '$location',
         data.settings = setting;
     };
     
+    $scope.sorteer = '-id';
+    
     $scope.sort = function (order) {
         $scope.sorteer = order;
-    };
-    
-    var toastShow = function (content) {
-        $mdToast.show({
-            template: '<md-toast><span flex>' + content + '</span></md-toast>',
-            hideDelay: 1800,
-            position: "top right"
-        });
     };
         
 }]);

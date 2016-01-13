@@ -11,16 +11,30 @@ app.factory('data', ['$http', function ($http) {
             
             // GRAFIEKEN
             {
-                name: "Stress test",
+                name: "Amisos",
                 active: true,
-                type: "graph",
+                type: "test",
                 title: "Amisos",
                 icon: "fa fa-sliders",
                 id: 0,
                 url: "views/cards/cardTest.html",
                 template: true,
-                category: ["graph"],
+                category: ["test"],
                 content: "De Amisos is een test ontwikkeld door het AMC om de mate van Misofonie te meten. Hieronder kunt u de test afnemen en uw mate van Misofonie meten",
+                show: true,
+                footer: "hide"
+            },
+            {
+                name: "Stress test",
+                active: false,
+                type: "test",
+                title: "Stress-test",
+                icon: "fa fa-sliders",
+                id: 1,
+                url: "views/cards/cardStress.html",
+                template: true,
+                category: ["test"],
+                content: "Met de stresstest kunt u vastleggen hoe hoog uw stress is op de afgenomen momenten. Met de opgeslagen data kunt u vervolgens ",
                 show: true,
                 footer: "hide"
             },
@@ -30,7 +44,7 @@ app.factory('data', ['$http', function ($http) {
                 type: "graph",
                 title: "Verslag Amisos",
                 icon: "fa fa-hashtag",
-                id: 1,
+                id: 2,
                 url: "views/cards/cardResultText.html",
                 template: true,
                 category: ["graph"],
@@ -43,7 +57,7 @@ app.factory('data', ['$http', function ($http) {
                 type: "graph",
                 title: "Resultaten Amisos per afname",
                 icon: "fa fa-area-chart",
-                id: 2,
+                id: 3,
                 url: "views/cards/cardResultLine.html",
                 template: true,
                 category: ["graph"],
@@ -56,7 +70,7 @@ app.factory('data', ['$http', function ($http) {
                 type: "graph",
                 title: "Resultaten Amisos vergelijking",
                 icon: "fa fa-bar-chart",
-                id: 3,
+                id: 4,
                 url: "views/cards/cardResultBar.html",
                 template: true,
                 category: ["graph"],
@@ -75,7 +89,7 @@ app.factory('data', ['$http', function ($http) {
                 liked: false,
                 disliked: false,
                 likeDisabled: false,
-                id: 4,
+                id: 5,
                 category: ["groep, beweging, geluid"],
                 tags: ["omgeving"],
                 url: "views/cards/oefeningen/racket.html",
@@ -97,7 +111,7 @@ app.factory('data', ['$http', function ($http) {
                 liked: false,
                 disliked: false,
                 likeDisabled: false,
-                id: 5,
+                id: 6,
                 category: ["concentratie"],
                 tags: ["keel, geritsel"],
                 url: "views/cards/oefeningen/achteruit.html",
@@ -119,7 +133,7 @@ app.factory('data', ['$http', function ($http) {
                 liked: false,
                 disliked: false,
                 likeDisabled: false,
-                id: 6,
+                id: 7,
                 category: ["concentratie"],
                 tags: ["eet"],
                 url: "views/cards/oefeningen/brief.html",
@@ -141,7 +155,7 @@ app.factory('data', ['$http', function ($http) {
                 liked: false,
                 disliked: false,
                 likeDisabled: false,
-                id: 7,
+                id: 8,
                 category: ["video", "concentratie"],
                 tags: ["herhaaldelijk"],
                 url: "views/cards/oefeningen/video.html",
@@ -164,7 +178,7 @@ app.factory('data', ['$http', function ($http) {
                 liked: false,
                 disliked: false,
                 likeDisabled: false,
-                id: 8,
+                id: 9,
                 category: ["lezen, concentratie"],
                 tags: ["keel"],
                 url: "views/cards/oefeningen/urgent.html",
@@ -186,7 +200,7 @@ app.factory('data', ['$http', function ($http) {
                 liked: false,
                 disliked: false,
                 likeDisabled: false,
-                id: 9,
+                id: 10,
                 category: ["tekst, concentratie"],
                 tags: ["nasaal"],
                 url: "views/cards/oefeningen/loslaten.html",
@@ -208,7 +222,7 @@ app.factory('data', ['$http', function ($http) {
                 liked: false,
                 disliked: false,
                 likeDisabled: false,
-                id: 10,
+                id: 11,
                 category: ["tekst, stress"],
                 tags: ["eet"],
                 url: "views/cards/oefeningen/lichaamsanker.html",
@@ -230,7 +244,7 @@ app.factory('data', ['$http', function ($http) {
                 liked: false,
                 disliked: false,
                 likeDisabled: false,
-                id: 11,
+                id: 12,
                 category: ["geluid"],
                 tags: ["eet"],
                 template: true,
@@ -245,7 +259,11 @@ app.factory('data', ['$http', function ($http) {
             }
         ],
         
-        
+        user: {
+            name: "Jan Hertogh",
+            email: "jan@janhertogh.nl"
+        },
+         
         // PROFIEL ACTIEF
         profile: [
 
@@ -298,22 +316,23 @@ app.factory('data', ['$http', function ($http) {
         // DATA VOOR GRAFIEKEN
         results: {
             // DATA STAAF DIAGRAM
-            amiLabels: [ "Vraag 1", "Vraag 2",  "Vraag 3",  "Vraag 4",  "Vraag 5" ],
+            amiLabels: [ "Vraag 1", "Vraag 2",  "Vraag 3",  "Vraag 4",  "Vraag 5", "Vraag 6", "Vraag 7", "Vraag 8", "Vraag 9", "Vraag 10" ],
             amiSeries: [ "Amisos Recent", "Amisos Vorig" ],
-            amiData: [ [3, 3, 2, 4, 3], [5, 4, 5, 3, 2] ],
+            amiData: [ [3, 3, 2, 4, 3, 1, 4, 0, 1, 2], [1, 4, 5, 3, 2, 3, 4, 4, 2, 3] ],
             
             // DATA VOOR LIJN DIAGRAM
             amiDates: [ "15/3", "3/3", "12/6", "29/7", "31/9" ],
             amiTotal: [ [19, 8, 25, 21, 13] ],
             amiTotalLabel: [ "Totaal per sessie" ],
             // DATA CIRKEL (STRESS) DIAGRAM
+            stressRecording: 0,
             stressData: [ 10, 40, 10, 60 ],
             stressLabels: [ "Kalm", "Walging", "Stress", "Woede" ],
             colours:
                 [
                     {
-                        fillColor: "rgba(0, 186, 255, 0.5)",
-                        strokeColor: "rgba(0, 186, 255, 0.8)",
+                        fillColor: "rgba(97, 205, 167, 0.5)",
+                        strokeColor: "rgba(97, 205, 167, 0.8)",
                         pointColor: "rgba(220,220,220,0.5)",
                         pointStrokeColor: "#fff",
                         pointHighlightFill: "#fff",

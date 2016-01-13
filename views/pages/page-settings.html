@@ -1,7 +1,7 @@
 <div class="custom-card-profile">
     <div class="card-body">
         <img class="card-image card-image-round" src="http://placehold.it/100x100"/>
-        <h2>Jan Hertogh</h2>
+        <h2> {{ user.name }} </h2>
         <p>dagen app gebruikt: 30 | oefeningen voltooid: 26</p>
     </div>
 </div>
@@ -10,20 +10,23 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3><i class="fa fa-user"></i> Gegevens</h3>
+                    <div class="card-header-overlay">
+                        <h3><i class="fa fa-user"></i> Gegevens</h3>
+                    </div>
                 </div>
                 <div class="card-body card-padding">
                     <ul>
-                        <li>Naam: Jan Hertogh</li>
-                        <li>Email: jan@janhertogh.nl</li>
-                        <li>Wachtwoord: &#8226;&#8226;&#8226;&#8226;&#8226;&#8226;</li>
+                        <li>Naam: {{ user.name }}</li>
+                        <li>Email: {{ user.email }}</li>
                     </ul>
                 </div>
             </div>
             
             <div class="card">
                 <div class="card-header">
-                    <h3><i class="fa fa-puzzle-piece"></i> Oefeningen actief</h3>
+                    <div class="card-header-overlay">
+                        <h3><i class="fa fa-puzzle-piece"></i> Oefeningen actief</h3>
+                    </div>
                 </div>
                 <div class="card-body card-padding">
                     <ul>
@@ -37,7 +40,9 @@
             <form role="form" class="form-horizontal">
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fa fa-gear"></i> Misofonie Instellingen</h3>
+                        <div class="card-header-overlay">
+                            <h3><i class="fa fa-gear"></i> Misofonie Instellingen</h3>
+                        </div>
                     </div>
                     <div class="card-body card-padding">
                         <span>Algemeen</span>
@@ -94,7 +99,9 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fa fa-gear"></i> Screening Instellingen</h3>
+                        <div class="card-header-overlay">
+                            <h3><i class="fa fa-gear"></i> Screening Instellingen</h3>
+                        </div>
                     </div>
                     <div class="card-body card-padding">
                         <span>Hoe vaak wilt u de volgende testen uitvoeren?</span>
@@ -122,13 +129,8 @@
                             </md-switch>
                         </fieldset>
                     </div>
-                    <div class="card-footer">
-                       
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                         <md-button type="submit" class="btn-blue btn-block" data-ng-click="saveSettings(setting)">Opslaan</md-button>
+                    <div class="card-footer card-padding">
+                       <p>*Instellingen worden automatisch opgeslagen</p>
                     </div>
                 </div>
             </form> 

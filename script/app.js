@@ -10,9 +10,19 @@ app.config(function ($routeProvider) {
             title: 'MisofoMe',
             sorter: true
         })
+        .when('/screening', {
+            templateUrl: 'views/pages/page-screening.html',
+            title: 'Screening',
+            sorter: true
+        })
         .when('/test', {
             templateUrl: 'views/pages/page-test.html',
             title: 'Amisos',
+            sorter: true
+        })
+        .when('/stress', {
+            templateUrl: 'views/pages/page-stress.html',
+            title: 'Stress-test',
             sorter: true
         })
         .when('/dashboard', {
@@ -29,6 +39,12 @@ app.config(function ($routeProvider) {
             templateUrl: 'views/pages/page-excercise.html',
             controller: 'mainController',
             title: 'Oefening',
+            sorter: true
+        })
+        .when('/maak', {
+            templateUrl: 'views/pages/page-maak.html',
+            controller: 'mainController',
+            title: 'Maak Oefening',
             sorter: true
         })
         .when('/instellingen', {
@@ -52,6 +68,13 @@ app.run(['$location', '$rootScope', function ($location, $rootScope) {
         }
     });
 }]);
+
+app.filter('reverse', function () {
+    "use strict";
+    return function (items) {
+        return items.slice().reverse();
+    };
+});
 
 
 app.controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {

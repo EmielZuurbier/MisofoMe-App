@@ -117,8 +117,18 @@ ul {
     margin: 0;
 }
 
-.btn-blue {
+.btn-orange {
     background-color: #f9a43a !important;
+    color: #ffffff !important;
+}
+
+.btn-red {
+    background-color: #f5464d !important;
+    color: #ffffff !important;
+}
+
+.btn-green {
+    background-color: #4db14d !important;
     color: #ffffff !important;
 }
 
@@ -154,6 +164,14 @@ audio {
     color: green;
     transform: scale(1);
 
+}
+
+.round {
+    display: block;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
 }
 
 button {
@@ -574,8 +592,7 @@ nav.open {
 /* -------------------- MAIN -------------------- */
 
 main { 
-    display: block; 
-    position: relative; 
+    display: block;  
     float: left; 
     left: 0;
     top: 0;
@@ -704,10 +721,6 @@ main.open {
 
 .view {
     position: absolute;
-    width: 100%;
-    left: 0;
-    height: auto;
-    float: left;
     -webkit-transition: .5s; 
     -moz-transition: .5s; 
     -ms-transition: .5s; 
@@ -747,8 +760,7 @@ main.open {
     margin-top: 30px;
 }
 
-.card-half:nth-of-type(odd) {
-    display: block;
+.card.card-half:nth-of-type(odd) {
     width: calc(50% - 7.5px);
     height: auto;
     background-color: #ffffff;
@@ -760,7 +772,7 @@ main.open {
     box-shadow: 0px 1px 8px #d6d6d6;
 }
 
-.card-half:nth-of-type(even) {
+.card.card-half:nth-of-type(even) {
     display: block;
     width: calc(50% - 7.5px);
     height: auto;
@@ -793,13 +805,13 @@ main.open {
 .card-header.large .card-header-overlay {
     color: #f9f9f9;
     background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent);
+    position: absolute;
 }
 
 .card-header-overlay {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;;
-    position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
@@ -1134,6 +1146,11 @@ md-toast {
 
 md-toast span {
     text-align: center;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input, md-input-container:not(.md-input-invalid).md-input-focused label {
+    border-color: #00baff;
+    color: #00baff;
 }
 
 

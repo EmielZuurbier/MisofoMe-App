@@ -49,9 +49,9 @@
                     <div class="row">
                         <div class="nav-list">
                             <ul>
-                                <li><a data-ng-click="navOpen=!navOpen; go('/collectie')" data-ng-class="getClass('/collectie')" ><i class="fa fa-list"></i> Collectie</a></li>
+                                <li><a data-ng-click="navOpen=!navOpen; go('/collectie')" data-ng-class="getClass('/collectie')" ><i class="fa fa-list"></i> MisofoMe</a></li>
                                 <li><a data-ng-click="navOpen=!navOpen; go('/bibliotheek')" data-ng-class="getClass('/bibliotheek')" ><i class="fa fa-puzzle-piece"></i> Oefeningen</a></li>
-                                <li><a data-ng-click="navOpen=!navOpen; go('/test')" data-ng-class="getClass('/test')" ><i class="fa fa-stethoscope"></i> Amisos</a></li>
+                                <li><a data-ng-click="navOpen=!navOpen; go('/screening')" data-ng-class="getClass('/screening')" ><i class="fa fa-stethoscope"></i> Screening</a></li>
                                 <li><a data-ng-click="navOpen=!navOpen; go('/dashboard')" data-ng-class="getClass('/dashboard')" ><i class="fa fa-area-chart"></i> Resultaten</a></li>
                                 <li><a data-ng-click="navOpen=!navOpen; go('/instellingen')" data-ng-class="getClass('/instellingen')" ><i class="fa fa-gear"></i> Instellingen</a></li>
                             </ul>
@@ -94,6 +94,14 @@
                     <label for="search" data-ng-show="search">Zoek</label>
                     <input name="search" data-ng-show="search" type="text" ng-model="searchInput">
                 </div>
+                
+<!--
+                <div class="header-add" data-ng-class="'search':search">
+                    <md-button>
+                        <i class="fa fa-plus"></i>
+                    </md-button>
+                </div>
+-->
 
                 <div class="header-options" ng-controller="PositionDemoCtrl as ctrl">
                     <md-menu md-position-mode="target-right target">
@@ -102,7 +110,13 @@
                         </md-button>
                         <md-menu-content width="4">
                             <md-menu-item>
-                                <p><strong>Sorteer op waardering:</strong></p>
+                                <md-button data-ng-href="#/maak"> 
+                                   <p><i class="fa fa-plus"></i> Maak oefening</p>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-divider></md-menu-divider>
+                            <md-menu-item>
+                                <p>Sorteer op waardering:</p>
                             </md-menu-item>
                             <md-menu-divider></md-menu-divider>
                             <md-menu-item>
@@ -116,13 +130,8 @@
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
-                                <md-button data-ng-click="sort('null')"> 
+                                <md-button data-ng-click="sort('-id')"> 
                                    <p><i class="fa fa-random"></i> Nieuwste</p>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button data-ng-click="sortSort(true)"> 
-                                   <p><i class="fa fa-random"></i> Toegevoegde</p>
                                 </md-button>
                             </md-menu-item>
                         </md-menu-content>

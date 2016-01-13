@@ -1,0 +1,42 @@
+<div class="container">
+    
+    <div class="card">
+        <div class="card-header">
+            <div class="card-header-overlay">
+                <h4><i class="fa fa-plus"></i> Maak oefening</h4>
+            </div>
+        </div>
+        <div class="card-body card-padding">
+            <md-input-container>
+                <label>Titel</label>
+                <input ng-model="oefening.title" md-maxlength="30">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Categorie</label>
+                <md-select ng-model="oefening.category">
+                    <md-option>
+                        Beweging
+                    </md-option>
+                    <md-option>
+                        Concentratie
+                    </md-option>
+                    <md-option>
+                        Geluid
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container>
+                <label>tags</label>
+                <input data-ng-model="oefening.tags" md-maxlength="30">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Inhoud</label>
+                <textarea data-ng-model="oefening.content" columns="1" md-maxlength="500" rows="5"></textarea>
+            </md-input-container>
+        </div>
+        <div class="card-footer card-padding">
+            <md-button class="btn-green btn-block" data-ng-disabled="!oefening" data-ng-click="oefeningAdd(oefening.title, oefening.category, oefening.tags, oefening.content)">Klaar</md-button>
+        </div>
+    </div>
+    
+</div>
