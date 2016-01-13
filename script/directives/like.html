@@ -1,0 +1,2 @@
+<button data-ng-class="{'active': card.liked}" data-ng-disabled="card.disliked" data-ng-click="like()"><i class="fa fa-thumbs-up" data-ng-class="{'green': card.liked}"></i> {{ card.likes }} </button>
+<button data-ng-class="{'active': card.disliked}" data-ng-disabled="card.liked" data-ng-click="dislike()"><i class="fa fa-thumbs-down" data-ng-class="{'red': card.disliked}"></i> {{ card.dislikes }}</button>

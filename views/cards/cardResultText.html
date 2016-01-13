@@ -1,0 +1,7 @@
+<p><strong>Uw laatste score is:</strong></p>
+<p><span class="card-accent">{{ results.amiTotal[0][4] }}</span> / 50</p>
+<a class="btn btn-block btn-line" href ng-click="clickMore=!clickMore">Meer info</a>
+<div class="click-more" ng-show="clickMore">
+    <p><strong>{{ amiResultsHeader }}</strong></p>
+    <p>{{ amiResultsBody }}</p>
+</div>

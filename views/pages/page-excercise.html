@@ -1,0 +1,26 @@
+<div class="container">
+            
+    <div class="card">
+        <div class="card-header" style="background-image: url('{{ cardsParam.thumb }}')" data-ng-class="{'large': cardsParam.type === 'exercise'}">
+            <div class="card-header-overlay">
+                <h4><i class="{{ cardsParam.icon }}"></i>{{ cardsParam.title }}<br><small>{{ cardsParam.category[0] | uppercase}}</small></h4>
+                <div class="card-header-icon">
+                    <i class="green" data-ng-class="{'fa fa-check pop': cardsParam.active}"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card-body card-padding">
+            <p>{{ cardsParam.content }}</p>
+            <div class="card-template" data-ng-if="cardsParam.template" data-ng-include="cardsParam.url"></div>
+        </div>
+        <div class="card-footer card-padding {{ cardsParam.footer }}">
+            <div class="card-footer-left">
+                <like-dislike info="cardsParam"></like-dislike>
+            </div>
+            <div class="card-footer-right">
+                <add-to-collection info="cardsParam"></add-to-collection>
+            </div>
+        </div>
+    </div>
+
+</div>
