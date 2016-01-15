@@ -1,0 +1,18 @@
+<div class="container">
+            
+    <div class="card">
+        <div class="card-header">
+            <div class="card-header-overlay">
+                <h4>Bibliotheek</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <ul class="card-list">
+                <li class="card-list-item" data-ng-repeat="item in info track by $index">
+                    <a data-ng-href="#/info/{{ $index }}"><span class="flex">{{ item.title }}</span><i class="fa fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>

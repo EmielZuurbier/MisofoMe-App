@@ -81,6 +81,11 @@ ul {
     padding: 0;
 }
 
+li {
+    color: #777777;
+    list-style: none;
+}
+
 .btn {
     background-color: #00baff;
     color: #f9f9f9;
@@ -163,7 +168,10 @@ audio {
 .green {
     color: green;
     transform: scale(1);
+}
 
+.blue {
+    color: #00baff;
 }
 
 .round {
@@ -194,6 +202,48 @@ button.active {
 
 button[disabled] {
     opacity: 0.5;
+}
+
+tool-tip.left .tooltip::before {
+    left: 10px;
+}
+
+tool-tip.center .tooltip::before {
+    left: calc(50% - 8px);
+}
+
+tool-tip.right .tooltip::before {
+    right: 10px;
+}
+
+.tooltip {
+    background-color: #333333;
+    color: #f9f9f9;
+    font-family: inherit;
+    padding: 15px;
+    max-width: 160px;
+    opacity: 0.9;
+    transform: translate(0, 10px);
+}
+
+.tooltip i {
+    position: absolute !important;
+    top: 5px !important;
+    right: 5px !important;
+    font-size: 1.2em !important;
+    color: #00baff;
+}
+
+.tooltip::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #333333;
 }
 
 
@@ -317,6 +367,7 @@ nav.open {
 
 .nav-list ul li a i {
     margin-right: 5px;
+    width: 15px;
     color: #0398d0
 }
 
@@ -346,8 +397,9 @@ nav.open {
     left: 0px;
     margin-bottom: 10px;
     padding: 0 15px;
-    background-color: #00baff; 
-/*    border-bottom: 1px solid #f1f1f1;*/
+    background-color: #00baff;
+/*    background: linear-gradient(90deg, #00baff, #00deff);*/
+/*    box-shadow: 0px 1px 6px #999999;*/
     -webkit-transition: .5s; 
     -moz-transition: .5s; 
     -ms-transition: .5s; 
@@ -365,6 +417,7 @@ nav.open {
 .header-back {
     display: block;
     font-size: 1.2em;
+    width: 55px;
 }
 
 .header-back a {
@@ -486,6 +539,7 @@ nav.open {
     float: left; 
     padding: 17px 17px 15px 0;
     cursor: pointer;
+    opacity: 1;
 }
 
 #nav-button i, #settings-button i { 
@@ -620,103 +674,6 @@ main.open {
     opacity: 0.2;
 }
 
-.context-button {
-    display: none;
-    position: fixed;
-    bottom: 50px;
-    right: 15px;
-    z-index: 4;
-}
-
-.context-button-icon {
-    display: block;
-    width: 60px;
-    height: 60px;
-    background-color: #00baff;
-    border-radius: 50%;
-    box-shadow: 0px 4px 10px #999999;
-    cursor: pointer;
-    z-index: 6;
-}
-
-.context-button-icon:hover, .context-button-icon:active {
-    background-color: #0398d0;
-}
-
-.context-button-icon svg {
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-}
-
-.context-button-option {
-    display: block;
-    width: 200px;
-    padding: 0;
-    background-color: #00baff;
-    position: absolute;
-    right: 0px;
-    bottom: 60px;
-    opacity: 1;
-    z-index: 5;
-    box-shadow: 0px 4px 10px #999999;
-    border-radius: 5px;
-    -webkit-transition: .5s; 
-    -moz-transition: .5s; 
-    -ms-transition: .5s; 
-    -o-transition: .5s; 
-    transition: .5s; 
-}
-
-.context-button-option::after {
-    position: absolute;
-    bottom: -8px;
-    right: 22px;
-    content: " ";
-    width: 0; 
-	height: 0; 
-	border-left: 8px solid transparent;
-	border-right: 8px solid transparent;
-	border-top: 8px solid #00baff;
-}
-
-.context-button-option.ng-hide-add, .context-button-option.ng-hide-remove {
-    -webkit-transition: .5s; 
-    -moz-transition: .5s; 
-    -ms-transition: .5s; 
-    -o-transition: .5s; 
-    transition: .5s; 
-}
-
-.context-button-option.ng-hide {
-    opacity: 0;
-    bottom: 40px;
-}
-
-.context-button-option li {
-    list-style: none;
-}
-
-.context-button-option li:nth-of-type(even) {
-    background-color: #0398d0;
-}
-
-.context-button-option button, .context-button-option a {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    color: #f9f9f9;
-    background: transparent;
-    border: 0;
-    text-align: left;
-}
-
-.context-button-option p {
-    padding: 15px;
-    font-weight: 500;
-    color: #f9f9f9;
-}
-
 /* -------------------- VIEWS -------------------- */
 
 .view {
@@ -798,6 +755,11 @@ main.open {
     background-position: center;
 }
 
+.card-header button {
+    background: transparent;
+    border: 0;
+}
+
 .card-header.large {
     min-height: 100px;
 }
@@ -840,6 +802,7 @@ main.open {
     font-weight: inherit;
     text-transform: inherit;
     margin: 0;
+    padding: 2px 6px 3px 0;
 }
 
 .card-header p i, .card-header h2 i, .card-header h3 i, .card-header h4 i {
@@ -876,6 +839,9 @@ main.open {
     color: #999999;
     padding-left: 15px;
     align-self: flex-start;
+    position: absolute;
+    right: 15px;
+    top: 10px;
 }
 
 .card-body {
@@ -883,7 +849,7 @@ main.open {
 /*    background-color: #f9f9f9;*/
     background-color: #ffffff;
     width: 100%;
-    max-height: 1000px;
+    max-height: 3000px;
     height: auto;
     float: left;
 }
@@ -903,9 +869,27 @@ main.open {
     float: left;
 }
 
-.card-body ul li {
-    list-style: none;
+.card-html ul {
+    padding-left: 1.5em;
+}
+
+.card-html ul li {
     color: #999999;
+}
+
+.card-html pre {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 0;
+}
+
+.card-html p {
+    white-space: pre-wrap;
 }
 
 .card-template {
@@ -913,6 +897,39 @@ main.open {
     width: 100%;
     height: auto;
     float: left;
+}
+
+.card-list {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.card-list .card-list-item {
+    list-style: none;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.card-list .card-list-item:first-of-type {
+    border-top: 1px solid #f1f1f1;
+}
+
+
+.card-list .card-list-item a {
+    display: flex;
+    align-content: center;
+    padding: 15px;
+    -webkit-transition: .5s; 
+    -moz-transition: .5s; 
+    -ms-transition: .5s; 
+    -o-transition: .5s; 
+    transition: .5s; 
+}
+
+.card-list .card-list-item a:hover {
+    text-decoration: none;
+    background-color: #f9f9f9;
 }
 
 .card-footer {
@@ -948,11 +965,16 @@ main.open {
     flex: 1 1 auto;
 }
 
+move {
+    display: flex;
+    justify-content: center;
+}
+
 .card-footer-right {
     flex: auto 1 auto;
 }
 
-.card-footer-right button, .card-footer-right a {
+.card-footer-right button, .card-footer-right a, .card-footer-middle button, .card-footer-middle a {
     font-family: 'Avenir';
     font-size: 1em;
     text-transform: uppercase;
@@ -986,11 +1008,11 @@ main.open {
 
 .card-add {
     position: relative;
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     height: 100px;
 }
 
-.card-add i {
+.card-add .fa-plus {
     font-size: 50px;
     color: #d7d7d7;
     position: absolute;
@@ -1092,6 +1114,12 @@ md-switch.md-checked .md-bar {
 
 md-tabs .md-tab.md-active, md-tabs .md-tab.md-focused {
     color: #f9f9f9;
+}
+
+
+md-tabs md-tabs-wrapper {
+    box-shadow: 0px 1px 6px #999999;
+/*    background: linear-gradient(90deg, #00baff, #00deff);*/
 }
 
 md-tabs .md-tab {
@@ -1226,6 +1254,24 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input, md-input-c
     transform: rotate(180deg);
 }
 
+.tooltip.ng-hide-add, .tooltip.ng-hide-remove {
+    -webkit-transition: 1s; 
+    -moz-transition: 1s; 
+    -ms-transition: 1s; 
+    -o-transition: 1s; 
+    transition: 1s;
+}
+
+.tooltip.ng-hide-add, .tooltip.ng-hide-remove.ng-hide-remove-active {
+    opacity: 0.9;
+    transform: translate(0, 10px);
+}
+
+.tooltip.ng-hide-remove, .tooltip.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+    transform: translate(0, -10px);
+}
+
 /*
 .header-title.ng-hide-add, .header-title.ng-hide-remove {
     -webkit-transition: .5s; 
@@ -1265,19 +1311,12 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input, md-input-c
     transition: .5s;
 }
 
-#nav-button.ng-hide-add, #nav-button.ng-hide-remove-active, .header-back.ng-hide-add, .header-back.ng-hide-remove-active {
+#nav-button.ng-hide-add, #nav-button.ng-hide-remove.ng-hide-remove-active, .header-back.ng-hide-remove.ng-hide-remove-active {
     opacity: 1;
-    top: 0;
 }
 
-#nav-button.ng-hide-add-active, .header-back.ng-hide-remove {
+#nav-button.ng-hide-add.ng-hide-add-active, #nav-button.ng-hide-remove, .header-back.ng-hide-add.ng-hide-add-active {
     opacity: 0;
-    top: -50px;
-}
-
-#nav-button.ng-hide-remove, .header-back.ng-hide-add-active {
-    opacity: 0;
-    top: 50px;
 }
 */
 

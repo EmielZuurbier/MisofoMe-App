@@ -53,6 +53,7 @@
                                 <li><a data-ng-click="navOpen=!navOpen; go('/bibliotheek')" data-ng-class="getClass('/bibliotheek')" ><i class="fa fa-puzzle-piece"></i> Oefeningen</a></li>
                                 <li><a data-ng-click="navOpen=!navOpen; go('/screening')" data-ng-class="getClass('/screening')" ><i class="fa fa-stethoscope"></i> Screening</a></li>
                                 <li><a data-ng-click="navOpen=!navOpen; go('/dashboard')" data-ng-class="getClass('/dashboard')" ><i class="fa fa-area-chart"></i> Resultaten</a></li>
+                                <li><a data-ng-click="navOpen=!navOpen; go('/info')" data-ng-class="getClass('/info')" ><i class="fa fa-info"></i> Informatie</a></li>
                                 <li><a data-ng-click="navOpen=!navOpen; go('/instellingen')" data-ng-class="getClass('/instellingen')" ><i class="fa fa-gear"></i> Instellingen</a></li>
                             </ul>
                         </div>
@@ -69,7 +70,7 @@
             </nav>
 
             <header class="header">
-                <div id="nav-button" data-ng-click="navOpen=!navOpen" data-ng-hide="pageName === 'Oefening'">
+                <div id="nav-button" data-ng-click="navOpen=!navOpen" data-ng-hide="back">
                     <div id="nav-icon" data-ng-class="{'open': navOpen}">
                         <span></span>
                         <span></span>
@@ -77,8 +78,8 @@
                     </div>
                 </div>
                 
-                <div class="header-back" data-ng-show="pageName === 'Oefening'">
-                    <a href="#/bibliotheek">
+                <div class="header-back" data-ng-show="back">
+                    <a href back>
                         <i class="fa fa-chevron-left"></i>
                     </a>
                 </div>
@@ -88,21 +89,13 @@
                 </div>
 
                 <div class="header-search" data-ng-class="{'search':search}">
-                    <md-button data-ng-class="{'active':!sorter}" data-ng-disabled="sorter" data-ng-click="search=!search">
+                    <md-button data-ng-class="{'active':!sorter}" data-ng-disabled="sorter" data-ng-click="search=!search" aria-label="search">
                         <i class="fa fa-search"></i>
                     </md-button>
                     <label for="search" data-ng-show="search">Zoek</label>
                     <input name="search" data-ng-show="search" type="text" ng-model="searchInput">
                 </div>
                 
-<!--
-                <div class="header-add" data-ng-class="'search':search">
-                    <md-button>
-                        <i class="fa fa-plus"></i>
-                    </md-button>
-                </div>
--->
-
                 <div class="header-options" ng-controller="PositionDemoCtrl as ctrl">
                     <md-menu md-position-mode="target-right target">
                         <md-button data-ng-class="{'active':!sorter}" data-ng-disabled="sorter" aria-label="Open demo menu" class="md-icon-button" ng-click="ctrl.openMenu($mdOpenMenu, $event)">
@@ -120,18 +113,18 @@
                             </md-menu-item>
                             <md-menu-divider></md-menu-divider>
                             <md-menu-item>
+                                <md-button data-ng-click="sort('-id')"> 
+                                   <p><i class="fa fa-star"></i> Nieuwste</p>
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
                                 <md-button data-ng-click="sort('-likes')"> 
-                                   <p><i class="fa fa-sort-amount-desc"></i> Hoog - Laag</p>
+                                   <p><i class="fa fa-sort-amount-desc"></i> Likes Hoog - Laag</p>
                                 </md-button>
                             </md-menu-item>
                             <md-menu-item>
                                 <md-button data-ng-click="sort('likes')"> 
-                                   <p><i class="fa fa-sort-amount-asc"></i> Laag - Hoog</p>
-                                </md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button data-ng-click="sort('-id')"> 
-                                   <p><i class="fa fa-random"></i> Nieuwste</p>
+                                   <p><i class="fa fa-sort-amount-asc"></i> Likes Laag - Hoog</p>
                                 </md-button>
                             </md-menu-item>
                         </md-menu-content>
@@ -152,7 +145,12 @@
         <!-- DIRECTIVES -->
         <script src="script/directives/add.js"></script>
         <script src="script/directives/like.js"></script>
+        <script src="script/directives/stress.js"></script>
+        <script src="script/directives/edit.js"></script>
         <script src="script/directives/move.js"></script>
+        <script src="script/directives/reken.js"></script>
+        <script src="script/directives/tooltip.js"></script>
+        <script src="script/directives/back.js"></script>
 
     </body>
     

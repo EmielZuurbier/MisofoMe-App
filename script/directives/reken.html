@@ -1,0 +1,71 @@
+<md-button data-ng-click="play()" data-ng-disabled="started" data-ng-hide="playing" id="button" class="btn-block btn-green">Start</md-button>
+<md-button data-ng-click="play()" data-ng-show="playing" id="button" class="btn-block btn-red">Opnieuw</md-button>
+
+<div class="reken">
+    <span id="q" data-ng-show="started">{{ equasion }}</span>
+    <span id="a" data-ng-show="started">{{ solve }}</span>
+    <div id="timerdiv" data-ng-show="time"><i class="fa fa-clock-o"></i> {{ time }}</div>
+    <div class="score">
+        <i data-ng-repeat="check in score" class="fa fa-check green pop"></i>
+    </div>
+</div>
+<input data-ng-disabled="playing" data-ng-focus="playing" data-ng-model="solve" type="number" name="answer" data-ng-keyup="check()">
+
+<style>
+    
+    .btn-block + .btn-block {
+        margin: 0;
+    }
+    
+    .reken {
+        display: flex;
+        position: relative;
+        height: 200px;
+        padding: 15px;
+        flex-direction: column;
+        background-color: #f5f5f5;
+        justify-content: center;
+        align-content: center;
+    }
+    
+    .reken span:first-of-type {
+        text-align: center;
+        font-size: 2.5em;
+        font-weight: 600;
+        color: #0398d0;
+    }
+    
+    .reken span:nth-of-type(2) {
+        text-align: center;
+        font-size: 2em;
+        font-weight: 600;
+        color: red;
+    }
+    
+    .score {
+        display: block;
+        width: 100%;
+        position: absolute;
+        left: 10px;
+        bottom: 5px;
+    }
+    
+    input {
+        display: block;
+        width: 100%;
+        border: 0;
+        background-color: #e7e7e7;
+        padding: 15px;
+        text-align: right;
+    }
+    
+    #timerdiv {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: #0398d0;
+        font-weight: 600;
+    }
+    
+</style>

@@ -1,13 +1,39 @@
 <div class="container">
+    
     <div class="card">
         <div class="card-header">
             <div class="card-header-overlay">
-                <h4><i class="fa fa-clock-o"></i> Stress<br><small>Hoe gestresst ben je op dit moment?</small></h4>
+                <h4><i class="fa fa-bolt"></i> Stress Test</h4>
             </div>
         </div>
         <div class="card-body card-padding">
-            <md-button class="button round btn-block btn-red" data-ng-mousedown="stressRecording = stressRecording + 1">Houd mij ingedrukt</md-button>
-            <h4>{{ stressRecording }}</h4>
+            <p><strong>Geef aan hoeveel stress je ervaart door de knop hieronder ingedrukt te houden.</strong></p><p>Hoe langer de knop ingedrukt blijft, des te hoger de score is.</p><p>Wanneer je denkt dat de meter op de juiste waarde staat kan je loslaten.</p>
+            <stress-button></stress-button>
         </div>
     </div>
+    
+    <div class="card" data-ng-repeat="card in cards | filter:{name: 'Circel Diagram'} track by card.id">
+        <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
+            <div class="card-header-overlay">
+                <h4><i class="{{ card.icon }}"></i> {{ card.title }}</h4>
+                <div class="card-header-icon">
+                    <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
+                </div>
+            </div>
+        </div>
+        <div class="card-body card-padding">
+            <p>{{ card.content }}</p>
+            <div class="card-template" data-ng-if="card.template" data-ng-include="card.url"></div>
+        </div>
+        <div class="card-footer card-padding" data-ng-show="card.show">
+            <div class="card-footer-left">
+                <like-dislike class="{{ card.footer }}" info="card"></like-dislike>
+                <tool-tip active="settings.x" index="$index" position="1" class="left" message="'Hier worden je resultaten van de Amisos weergegeven'"></tool-tip>
+            </div>
+            <div class="card-footer-right" data-ng-show="card.show">
+                <add-to-collection info="card"></add-to-collection>
+            </div>
+        </div>
+    </div>
+    
 </div>

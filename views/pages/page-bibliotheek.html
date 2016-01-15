@@ -8,62 +8,68 @@
             <div class="container">
                         
 <!--
-                        <div data-ng-show="settings.a" class="card card-recommended">
-                            <div class="card-header dark-blue card-recommended">
-                                <h4>Aanbevolen oefeningen voor jou</h4>
-                            </div>
-                        </div>
-                        
-                        <div data-ng-show="settings.a" class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter:{active: false} | orderBy: '-likes' | limitTo: 3 track by card.id">
-                            <div class="card-header blue" style="background-image: {{ card.thumb }}">
-                                <h4>{{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
-                                <div class="card-header-icon">
-                                    <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
-                                </div>
-                            </div>
-                            <div class="card-body card-padding">
-                                <p>{{ card.desc }}</p>
-                            </div>
-                            <img class="card-image" data-ng-src="{{ card.thumb }}"/>
-                            <div class="card-footer card-padding">
-                                <div class="card-footer-left">
-                                    <like-dislike info="card"></like-dislike>
-                                </div>
-                                <div class="card-footer-right">
-                                    <add-to-collection info="card"></add-to-collection>
-                                    <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div data-ng-show="settings.a" class="card card-recommended">
-                            <div class="card-header dark-blue card-recommended">
-                                <h4>Alle oefeningen</h4>
-                            </div>
-                        </div>
--->
-                            
-                        
-                <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter: searchInput | orderBy: sorteer track by card.id">
-                    <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
-                        <div class="card-header-overlay">
-                            <h4><i class="{{ card.icon }}"></i> {{ card.title }}</h4>
-                            <div class="card-header-icon">
-                                <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
-                            </div>
+                <div data-ng-show="settings.a" class="card card-recommended">
+                    <div class="card-header dark-blue card-recommended">
+                        <h4>Aanbevolen oefeningen voor jou</h4>
+                    </div>
+                </div>
+
+                <div data-ng-show="settings.a" class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter:{active: false} | filter:{tags: settingsPref[0]} | orderBy: '-likes' | limitTo: 3 track by card.id">
+                    <div class="card-header blue" style="background-image: {{ card.thumb }}">
+                        <h4>{{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
+                        <div class="card-header-icon">
+                            <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                         </div>
                     </div>
                     <div class="card-body card-padding">
-                        <p><small>{{ card.category[0] | uppercase }}<br>
-                        Toegevoegd door: {{ card.author }}</small></p>
                         <p>{{ card.desc }}</p>
                     </div>
+                    <img class="card-image" data-ng-src="{{ card.thumb }}"/>
                     <div class="card-footer card-padding">
                         <div class="card-footer-left">
                             <like-dislike info="card"></like-dislike>
                         </div>
                         <div class="card-footer-right">
                             <add-to-collection info="card"></add-to-collection>
+                            <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-ng-show="settings.a" class="card card-recommended">
+                    <div class="card-header dark-blue card-recommended">
+                        <h4>Alle oefeningen</h4>
+                    </div>
+                </div>
+-->
+                            
+                        
+                <div class="card" data-ng-repeat="card in cards | filter:{type: 'exercise'} | filter: searchInput | orderBy: sorteer track by card.id">
+                    <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
+                        <a data-ng-href="#/bibliotheek/{{ card.id }}">
+                            <div class="card-header-overlay">
+                                <h4><i class="{{ card.icon }}"></i> {{ card.title }}</h4>
+                                <div class="card-header-icon">
+                                    <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
+                                </div>
+                                <edit info="card" user="user"></edit>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body card-padding">
+                        <p><small>{{ card.category[0] | uppercase }}<br>
+                            Toegevoegd door: <span class="blue">{{ card.author }}</span></small></p>
+<!--                        <div class="card-html" data-ng-bind-html="trustAsHtml(card.content)"></div>-->
+                        <p>{{ card.desc | limitTo: 140 }}{{ card.desc.length > 140 ? '...' : '' }}</p>
+                    </div>
+                    <div class="card-footer card-padding">
+                        <div class="card-footer-left">
+                            <like-dislike info="card"></like-dislike>
+                            <tool-tip active="settings.x" index="$index" position="1" class="left" message="'Laat zien of een oefeningen helpt of niet helpt'"></tool-tip>
+                        </div>
+                        <div class="card-footer-right">
+                            <add-to-collection info="card"></add-to-collection>
+                            <tool-tip active="settings.x" index="$index" position="0" class="left" message="'Voeg hiermee oefeningen toe aan je startpagina'"></tool-tip>
                             <a data-ng-href="#/bibliotheek/{{ card.id }}">Lees Meer</a>
                         </div>
                     </div>
@@ -89,6 +95,7 @@
                             <div class="card-header-icon">
                                 <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                             </div>
+                            <edit></edit>
                         </div>
                     </div>
                     <div class="card-body card-padding">
@@ -96,7 +103,6 @@
                         Toegevoegd door: {{ card.author }}</small></p>
                         <p>{{ card.desc }}</p>
                     </div>
-                    <img class="card-image" data-ng-src="{{ card.thumb }}"/>
                     <div class="card-footer card-padding">
                         <div class="card-footer-left">
                             <like-dislike info="card"></like-dislike>
@@ -128,6 +134,7 @@
                             <div class="card-header-icon">
                                 <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                             </div>
+                            <edit></edit>
                         </div>
                     </div>
                     <div class="card-body card-padding">
@@ -135,7 +142,6 @@
                         Toegevoegd door: {{ card.author }}</small></p>
                         <p>{{ card.desc }}</p>
                     </div>
-                    <img class="card-image" data-ng-src="{{ card.thumb }}"/>
                     <div class="card-footer card-padding">
                         <div class="card-footer-left">
                             <like-dislike info="card"></like-dislike>
@@ -167,6 +173,7 @@
                             <div class="card-header-icon">
                                 <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                             </div>
+                            <edit></edit>
                         </div>
                     </div>
                     <div class="card-body card-padding">
@@ -174,7 +181,6 @@
                         Toegevoegd door: {{ card.author }}</small></p>
                         <p>{{ card.desc }}</p>
                     </div>
-                    <img class="card-image" data-ng-src="{{ card.thumb }}"/>
                     <div class="card-footer card-padding">
                         <div class="card-footer-left">
                             <like-dislike info="card"></like-dislike>

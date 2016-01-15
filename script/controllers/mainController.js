@@ -10,11 +10,13 @@ app.controller('mainController', ['$scope', 'data', '$routeParams', '$location',
             position: "top right"
         });
     };
-        
+    
+    // HREF FUNCTION
     $scope.go = function (path) {
         $location.path(path);
     };
     
+    // GET ACTIVE MENU ITEM
     $scope.getClass = function (path) {
         if ($location.path().substr(0, path.length) === path) {
             return 'active';
@@ -30,16 +32,23 @@ app.controller('mainController', ['$scope', 'data', '$routeParams', '$location',
     $scope.settings = data.settings;
     $scope.settingsPref = data.settingsPref;
     $scope.user = data.user;
+    $scope.info = data.info;
+    $scope.infoParam = data.info[$routeParams.id];
     
-    $scope.stressRecording = data.results.stressRecording;
+    $scope.trustAsHtml = function (trust) {
+        return $sce.trustAsHtml(trust);
+    };
     
+    
+    // NEW EXERCISE
     $scope.oefeningAdd = function (title, category, tags, content) {
         var d = new Date();
+        
         data.cards.push({
             name: title,
             active: false,
             type: "exercise",
-            author: "user",
+            author: data.user.name,
             likes: 0,
             dislikes: 0,
             liked: false,
@@ -49,20 +58,34 @@ app.controller('mainController', ['$scope', 'data', '$routeParams', '$location',
             tags: [tags],
             icon: "fa fa-user",
             title: title,
+            thumb: "media/thumb/" + category + ".png",
             desc: content,
-            content: content,
-            date: d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear(),
+            content: "<p>" + content + "</p>",
+            date: d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear(),
             show: false
         });
+        console.log(data.cards[data.cards.length - 1]);
         toastShow('Oefening aangemaakt');
+        $location.path('/bibliotheek');
+    };
+    
+    $scope.oefeningEdit = function (title, category, tags, content, id) {
+        data.cards[id].title = title;
+        data.cards[id].category = [category];
+        data.cards[id].tags = [tags];
+        data.cards[id].desc = content;
+        data.cards[id].content = "<p>" + content + "</p>";
+        
+        console.log(data.cards[data.cards.length - 1]);
+        toastShow('Oefening aangepast');
         $location.path('/bibliotheek');
     };
     
     $scope.random = Math.floor(Math.random() * 10);
     
-    console.log($scope.random);
-    console.log($scope.settings);
-    console.log($scope.settingsPref);
+//    console.log($scope.random);
+//    console.log($scope.settings);
+//    console.log($scope.settingsPref);
     
     // UPDATE AMISOS DATA
     $scope.newAmiData = [];
@@ -88,19 +111,19 @@ app.controller('mainController', ['$scope', 'data', '$routeParams', '$location',
     };
     
     // BEREKEN UITSLAG VAN AMISOS
-    if (data.results.amiTotal[0][4] <= 4) {
-        $scope.amiResultsHeader = "0 - 4 punten: Geen misofonie.";
+    if (data.results.amiTotal[0][4] <= 10) {
+        $scope.amiResultsHeader = "0 - 10 punten: Geen misofonie.";
         $scope.amiResultsBody = "U vertoont geen tot enige kenmerken van misofonie. De kenmerken zijn niet zo zwaar dat het raadzaam is om hulp te zoeken.";
-    } else if (data.results.amiTotal[0][4] <= 9) {
-        $scope.amiResultsBody = "5 - 9 punten: Milde symptomen van misofonie. U vertoont lichte symptomen van misofonie. Als misofonie zich eenmaal heeft ontwikkeld is het chronisch, hoewel u er in bepaalde perioden meer last van kunt hebben dan in andere (bijvoorbeeld onder invloed van stress). Wel zouden de symptomen in de loop van de tijd kunnen verergeren; zo kan uw afkeer zich uitbreiden naar andere geluiden. Als u merkt dat dit het geval is, kan het raadzaam zijn om hulp te zoeken. ";
-    } else if (data.results.amiTotal[0][4] <= 14) {
-        $scope.amiResultsHeader = "10 - 14 punten: Middelmatige symptomen van misofonie.";
+    } else if (data.results.amiTotal[0][4] <= 20) {
+        $scope.amiResultsBody = "11 - 20 punten: Milde symptomen van misofonie. U vertoont lichte symptomen van misofonie. Als misofonie zich eenmaal heeft ontwikkeld is het chronisch, hoewel u er in bepaalde perioden meer last van kunt hebben dan in andere (bijvoorbeeld onder invloed van stress). Wel zouden de symptomen in de loop van de tijd kunnen verergeren; zo kan uw afkeer zich uitbreiden naar andere geluiden. Als u merkt dat dit het geval is, kan het raadzaam zijn om hulp te zoeken. ";
+    } else if (data.results.amiTotal[0][4] <= 30) {
+        $scope.amiResultsHeader = "21 - 30 punten: Middelmatige symptomen van misofonie.";
         $scope.amiResultsBody = "U vertoont middelmatige symptomen van misofonie. Als misofonie zich eenmaal heeft ontwikkeld is het chronisch, hoewel u er in bepaalde perioden meer last van kunt hebben dan in andere (bijvoorbeeld onder invloed van stress). Wel zouden de symptomen in de loop van de tijd kunnen verergeren; zo kan uw afkeer zich uitbreiden naar andere geluiden. Als de symptomen van misofonie u belemmeren in uw functioneren (bijvoorbeeld in uw werk en/of thuis), is het raadzaam om hulp te zoeken.";
-    } else if (data.results.amiTotal[0][4] <= 19) {
-        $scope.amiResultsHeader = "15 - 19 punten: Ernstige symptomen van misofonie.";
+    } else if (data.results.amiTotal[0][4] <= 40) {
+        $scope.amiResultsHeader = "31 - 40 punten: Ernstige symptomen van misofonie.";
         $scope.amiResultsBody = "U vertoont ernstige symptomen van misofonie. Waarschijnlijk belemmeren deze symptomen u in uw functioneren (bijvoorbeeld in uw werk en/of thuis). Dan is het raadzaam om hulp te zoeken.";
-    } else if (data.results.amiTotal[0][4] <= 25) {
-        $scope.amiResultsHeader = "20 - 25 punten: Zeer ernstige symtomen van misofonie.";
+    } else if (data.results.amiTotal[0][4] <= 50) {
+        $scope.amiResultsHeader = "41 - 50 punten: Zeer ernstige symtomen van misofonie.";
         $scope.amiResultsBody = "U vertoont zeer ernstige symptomen van misofonie. Zeer waarschijnlijk belemmeren deze symptomen u in uw functioneren (bijvoorbeeld in uw werk en/of thuis). Dan is het raadzaam om hulp te zoeken.";
     }
     

@@ -22,12 +22,12 @@ app.directive('addToCollection', ['data', '$mdToast', '$routeParams', function (
                 if ($scope.card.active) {
                     $scope.buttonText = "Toevoegen";
                     $scope.card.active = false;
-                    toastShow("Oefening verwijderd uit Collectie");
+                    toastShow("Verwijderd uit Collectie");
                     console.log($scope.card.active);
                 } else if (!$scope.card.active) {
                     $scope.buttonText = "Verwijderen";
                     $scope.card.active = true;
-                    toastShow("Oefening toegevoegd aan Collectie");
+                    toastShow("Toegevoegd aan Collectie");
                     console.log($scope.card.active);
                 }
             };

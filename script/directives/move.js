@@ -7,9 +7,15 @@ app.directive('move', ['data', function (data) {
 		templateUrl: 'script/directives/move.html',
         link: function (scope, element, attrs) {
             
-            scope.moveUp = function (origin, destination) {
-                scope.$index -= 1;
-                console.log(scope.$index);
+            scope.moveUp = function (index) {
+                console.log(scope.cards[index]);
+//                var temp = scope.cards[index - 1];
+//                scope.cards.splice(index, 0);
+//                
+//                
+//                scope.$index -= 1;
+//                console.log(scope.$index);
+//                console.log(scope.cards);
                 
                 
             };

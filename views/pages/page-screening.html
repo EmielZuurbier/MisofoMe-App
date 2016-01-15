@@ -3,17 +3,17 @@
     <div class="card" index="{{$index}}" data-ng-repeat="card in cards | filter: {category: 'test'}">
         <div class="card-header" style="background-image: url('{{ card.thumb }}')" data-ng-class="{'large': card.type === 'exercise'}">
             <div class="card-header-overlay">
-                <h4><i class="{{ card.icon }}"></i> {{ card.title }}<br><small>{{ card.category[0] | uppercase }}</small></h4>
+                <h4><i class="{{ card.icon }}"></i> {{ card.title }}</h4>
                 <div class="card-header-icon">
                     <i class="green" data-ng-class="{'fa fa-check pop': card.active}"></i>
                 </div>
             </div>
         </div>
-        <div class="card-body card-padding" data-ng-show="card.show">
-            <p>{{ card.content }}</p>
+        <div class="card-body card-padding">
+            <div data-ng-bind-html="trustAsHtml( card.content )"></div>
             <div class="card-template" data-ng-if="card.template" data-ng-include="card.url"></div>
         </div>
-        <div class="card-footer card-padding" data-ng-show="card.show">
+        <div class="card-footer card-padding">
             <div class="card-footer-left">
                 <like-dislike class="{{ card.footer }}" info="card"></like-dislike>
             </div>

@@ -1,16 +1,19 @@
 <div class="container">
             
     <div class="card">
-        <div class="card-header" style="background-image: url('{{ cardsParam.thumb }}')" data-ng-class="{'large': cardsParam.type === 'exercise'}">
+        <div class="card-header" data-ng-disabled="true" style="background-image: url('{{ cardsParam.thumb }}')" data-ng-class="{'large': cardsParam.type === 'exercise'}">
             <div class="card-header-overlay">
-                <h4><i class="{{ cardsParam.icon }}"></i>{{ cardsParam.title }}<br><small>{{ cardsParam.category[0] | uppercase}}</small></h4>
+                <h4><i class="{{ cardsParam.icon }}"></i>{{ cardsParam.title }}</h4>
                 <div class="card-header-icon">
                     <i class="green" data-ng-class="{'fa fa-check pop': cardsParam.active}"></i>
                 </div>
+                <edit info="cardsParam" user="user"></edit>
             </div>
         </div>
         <div class="card-body card-padding">
-            <p>{{ cardsParam.content }}</p>
+            <p><small>{{ cardsParam.category[0] | uppercase }}<br>
+                Toegevoegd door: <span class="blue">{{ cardsParam.author }}</span></small></p>
+            <div class="card-html" data-ng-bind-html="trustAsHtml( cardsParam.content )"></div>
             <div class="card-template" data-ng-if="cardsParam.template" data-ng-include="cardsParam.url"></div>
         </div>
         <div class="card-footer card-padding {{ cardsParam.footer }}">
