@@ -5,7 +5,7 @@ CMD Amsterdam
 Team 13  
 In opdracht van het AMC  
 
-**versie 0.12.01.12.15**
+**versie 1.0.01.02.16**
 
 Leden
 -----------
@@ -16,6 +16,10 @@ Leden
 
 Changelog
 -----------
+
+**UPDATE**  
+01-02-2015
+- Latest version updated
 
 09-12-2015  
 - New card templates
