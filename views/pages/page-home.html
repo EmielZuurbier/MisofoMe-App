@@ -11,7 +11,9 @@
         </div>
         <div class="card-body card-padding" data-ng-show="card.show">
             <p data-ng-if="card.type === 'exercise'"><small>{{ card.category[0] | uppercase }}</small></p>
-            <div class="card-html" data-ng-bind-html="trustAsHtml( card.content )"></div>
+            <div class="card-html">
+                <p data-ng-bind-html="trustAsHtml( card.content )"></p>
+            </div>
             <div class="card-template" data-ng-if="card.template" data-ng-include="card.url"></div>
         </div>
         <div class="card-footer card-padding" data-ng-show="card.show">

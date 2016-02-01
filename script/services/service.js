@@ -20,7 +20,7 @@ app.factory('data', ['$http', function ($http) {
                 url: "views/cards/cardTest.html",
                 template: true,
                 category: ["test"],
-                content: "<p>De Amisos is een test ontwikkeld door het AMC om de mate van Misofonie te meten. Hieronder kunt u de test afnemen en uw mate van Misofonie meten</p>",
+                content: "<p>De Amisos is een test ontwikkeld door het AMC om de mate van Misofonie te meten. Hieronder kun je de test afnemen en jouw mate van Misofonie meten.<br>Met deze gegevens kunnen oefeningen worden aangeraden die geschikt zijn voor jou.</p>",
                 show: true,
                 footer: "hide"
             },
@@ -34,7 +34,7 @@ app.factory('data', ['$http', function ($http) {
                 url: "views/cards/cardStress.html",
                 template: true,
                 category: ["test"],
-                content: "<p>Met de stresstest kunt u vastleggen hoe hoog uw stress is op de afgenomen momenten. De resultaten worden op de telefoon opgeslagen</p>",
+                content: "<p>Met de stresstest kunt jij vastleggen hoe hoog jouw stress is op dit moment. De resultaten worden op de telefoon opgeslagen waarmee oefeningen voor jou worden aangeraden.</p>",
                 show: true,
                 footer: "hide"
             },
@@ -42,7 +42,7 @@ app.factory('data', ['$http', function ($http) {
                 name: "Tekst Diagram",
                 active: false,
                 type: "graph",
-                title: "Verslag Amisos",
+                title: "Score laatste Amisos afname",
                 icon: "fa fa-hashtag",
                 id: 2,
                 url: "views/cards/cardResultText.html",
@@ -104,7 +104,7 @@ app.factory('data', ['$http', function ($http) {
                 likeDisabled: false,
                 id: 6,
                 category: ["groep, beweging, geluid"],
-                tags: ["omgeving"],
+                tags: "omgeving",
                 url: "views/cards/oefeningen/racket.html",
                 thumb: "media/thumb/thumb1.jpg",
                 icon: "fa fa-puzzle-piece",
@@ -125,7 +125,7 @@ app.factory('data', ['$http', function ($http) {
                 likeDisabled: false,
                 id: 7,
                 category: ["concentratie"],
-                tags: ["keel, geritsel"],
+                tags: "geritsel",
                 url: "views/cards/oefeningen/achteruit.html",
                 thumb: "media/thumb/thumb2.jpg",
                 icon: "fa fa-puzzle-piece",
@@ -146,7 +146,7 @@ app.factory('data', ['$http', function ($http) {
                 likeDisabled: false,
                 id: 8,
                 category: ["concentratie"],
-                tags: ["eet"],
+                tags: "bepaald",
                 url: "views/cards/oefeningen/brief.html",
                 thumb: "media/thumb/thumb3.jpg",
                 icon: "fa fa-puzzle-piece",
@@ -167,7 +167,7 @@ app.factory('data', ['$http', function ($http) {
                 likeDisabled: false,
                 id: 9,
                 category: ["video", "concentratie"],
-                tags: ["herhaaldelijk"],
+                tags: "herhaaldelijk",
                 url: "views/cards/oefeningen/video.html",
                 template: true,
                 thumb: "media/thumb/thumb4.jpg",
@@ -189,7 +189,7 @@ app.factory('data', ['$http', function ($http) {
                 likeDisabled: false,
                 id: 10,
                 category: ["lezen, concentratie"],
-                tags: ["keel"],
+                tags: "keel",
                 url: "views/cards/oefeningen/urgent.html",
                 thumb: "media/thumb/thumb5.jpg",
                 icon: "fa fa-puzzle-piece",
@@ -209,8 +209,8 @@ app.factory('data', ['$http', function ($http) {
                 disliked: false,
                 likeDisabled: false,
                 id: 11,
-                category: ["tekst, concentratie"],
-                tags: ["nasaal"],
+                category: ["concentratie"],
+                tags: "nasaal",
                 url: "views/cards/oefeningen/loslaten.html",
                 thumb: "media/thumb/thumb6.jpg",
                 icon: "fa fa-puzzle-piece",
@@ -230,8 +230,8 @@ app.factory('data', ['$http', function ($http) {
                 disliked: false,
                 likeDisabled: false,
                 id: 12,
-                category: ["tekst, stress"],
-                tags: ["eet"],
+                category: ["stress"],
+                tags: "eet",
                 url: "views/cards/oefeningen/lichaamsanker.html",
                 thumb: "media/thumb/thumb7.jpg",
                 icon: "fa fa-puzzle-piece",
@@ -252,7 +252,7 @@ app.factory('data', ['$http', function ($http) {
                 likeDisabled: false,
                 id: 13,
                 category: ["concentratie"],
-                tags: ["reken"],
+                tags: "herhaaldelijk",
                 url: "views/cards/oefeningen/rekenspel.html",
                 thumb: "media/thumb/thumb9.jpg",
                 icon: "fa fa-puzzle-piece",
@@ -274,7 +274,7 @@ app.factory('data', ['$http', function ($http) {
                 likeDisabled: false,
                 id: 14,
                 category: ["geluid"],
-                tags: ["eet"],
+                tags: "eet",
                 template: true,
                 url: "views/cards/oefeningen/geluid.html",
                 thumb: "media/thumb/thumb8.jpg",
@@ -339,32 +339,14 @@ app.factory('data', ['$http', function ($http) {
             d: false,
             e: false,
             f: "",
-            g: "Wekelijks",
-            h: "Maandelijks",
+            g: "Maandelijks",
+            h: "Wekelijks",
             i: true,
-            x: true
+            x: false
         },
         
-//        settingsPref: {
-//            eet: {
-//                filter: 'eet'
-//            },
-//            nasaal: {
-//                filter: 'nasaal'
-//            },
-//            keel: {
-//                
-//            },
-//            bepaald: {
-//                
-//            },
-//            herhaaldelijk: {
-//                
-//            },
-//            geritsel {}
-//        },
-        
-        settingsPref: ['eet', '', '', '', '', '', ''],
+        // VOORKEUREN
+        settingsPref: ['', '', '', '', '', '', ''],
         
 //        settingsPref: {
 //            a: 'eet',
@@ -385,7 +367,7 @@ app.factory('data', ['$http', function ($http) {
             
             // DATA VOOR LIJN DIAGRAM
             amiDates: [ "15/3", "3/3", "12/6", "29/7", "31/9" ],
-            amiTotal: [ [19, 8, 25, 21, 13] ],
+            amiTotal: [ [26, 42, 30, 35, 29] ],
             amiTotalLabel: [ "Totaal per sessie" ],
             // DATA CIRKEL (STRESS) DIAGRAM
             stressRecording: 0,

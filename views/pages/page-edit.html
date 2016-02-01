@@ -19,17 +19,25 @@
                     <md-option>Geluid</md-option>
                 </md-select>
             </md-input-container>
-            <md-input-container>
-                <label>tags</label>
-                <input data-ng-init="cardsParam.tags" data-ng-model="cardsParam.tags" md-maxlength="30">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Voorkeur</label>
+                <md-select data-ng-init="cardsParam.tags" required ng-model="cardsParam.tags">
+                    <md-option value="eet">Eetgeluiden</md-option>
+                    <md-option value="nasaal">Nasale geluiden</md-option>
+                    <md-option value="keel">Keelgeluiden</md-option>
+                    <md-option value="bepaald">Bepaalde geluiden</md-option>
+                    <md-option value="herhaaldelijk">Herhaaldelijke geluiden</md-option>
+                    <md-option value="geritsel">Geritsel</md-option>
+                    <md-option value="omgeving">Omgevings geluiden</md-option>
+                </md-select>
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Inhoud</label>
-                <textarea data-ng-init="cardsParam.content" data-ng-model="cardsParam.content" columns="1" rows="5"></textarea>
+                <textarea data-ng-init="cardsParam.content" data-ng-model="cardsParam.content" columns="1" rows="4"></textarea>
             </md-input-container>
         </div>
         <div class="card-footer card-padding">
-            <md-button class="btn-green btn-block" data-ng-click="oefeningEdit(cardsParam.title, cardsParam.category[0], cardsParam.tags, cardsParam.content, cardsParam.id)">Klaar</md-button>
+            <md-button data-ng-disabled="!cardsParam.title || !cardsParam.category[0] || !cardsParam.content" class="btn-green btn-block" data-ng-click="oefeningEdit(cardsParam.title, cardsParam.category[0], cardsParam.tags, cardsParam.content, cardsParam.id)">Klaar</md-button>
         </div>
     </div>
     

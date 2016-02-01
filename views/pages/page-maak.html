@@ -19,17 +19,25 @@
                     <md-option>Geluid</md-option>
                 </md-select>
             </md-input-container>
-            <md-input-container>
-                <label>tags</label>
-                <input data-ng-model="oefening.tags" md-maxlength="30">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Voorkeur</label>
+                <md-select required ng-model="oefening.tags">
+                    <md-option value="eet">Eetgeluiden</md-option>
+                    <md-option value="nasaal">Nasale geluiden</md-option>
+                    <md-option value="keel">Keelgeluiden</md-option>
+                    <md-option value="bepaald">Bepaalde geluiden</md-option>
+                    <md-option value="herhaaldelijk">Herhaaldelijke geluiden</md-option>
+                    <md-option value="geritsel">Geritsel</md-option>
+                    <md-option value="omgeving">Omgevings geluiden</md-option>
+                </md-select>
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Inhoud</label>
-                <textarea data-ng-model="oefening.content" columns="1" rows="5"></textarea>
+                <textarea data-ng-model="oefening.content" columns="1" rows="4"></textarea>
             </md-input-container>
         </div>
         <div class="card-footer card-padding">
-            <md-button class="btn-green btn-block" data-ng-disabled="!oefening" data-ng-click="oefeningAdd(oefening.title, oefening.category, oefening.tags, oefening.content)">Klaar</md-button>
+            <md-button class="btn-green btn-block" data-ng-disabled="!oefening.title || !oefening.category || !oefening.content" data-ng-click="oefeningAdd(oefening.title, oefening.category, oefening.tags, oefening.content)">Klaar</md-button>
         </div>
     </div>
     

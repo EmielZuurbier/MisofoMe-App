@@ -137,6 +137,11 @@ li {
     color: #ffffff !important;
 }
 
+.btn-blue {
+    background-color: #00baff !important;
+    color: #ffffff !important;
+}
+
 progress {
     display: block;
     width: 100%;
@@ -161,17 +166,25 @@ audio {
 }
 
 .red {
-    color: red;
+    color: #f5464d;
     transform: scale(1);
 }
 
 .green {
-    color: green;
+    color: #4db14d;
     transform: scale(1);
 }
 
 .blue {
     color: #00baff;
+}
+
+.orange {
+    color: #f9a43a;
+}
+
+.purple {
+    color: #b15ee5;
 }
 
 .round {
@@ -244,6 +257,10 @@ tool-tip.right .tooltip::before {
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 8px solid #333333;
+}
+
+.container {
+    max-width: 480px !important;
 }
 
 
@@ -711,11 +728,10 @@ main.open {
 /*    border: 1px solid #f1f1f1;*/
     float: left;
     box-shadow: 0px 1px 8px #d6d6d6;
+    overflow: hidden;
+    border-radius: 4px;
 }
 
-.card-recommended:nth-of-type(even) {
-    margin-top: 30px;
-}
 
 .card.card-half:nth-of-type(odd) {
     width: calc(50% - 7.5px);
@@ -770,6 +786,10 @@ main.open {
     position: absolute;
 }
 
+.card-header.large .green {
+    color: #ffffff;
+}
+
 .card-header-overlay {
     display: flex;
     align-items: flex-end;
@@ -810,10 +830,37 @@ main.open {
     margin-right: 5px;
 }
 
-.card-header.card-recommended {
-    text-align: center;
-    text-transform: uppercase;
+.card-recommended {
+    margin-bottom: 15px;
+}
+
+.card-recommended a{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    text-align: left;
+/*    text-transform: uppercase;*/
+}
+
+.card-recommended a:hover {
+    text-decoration: none;
+}
+
+.card-recommended-image {
+    flex: 1;
+    background-size: cover;
+    background-position: left;
+}
+
+.card-recommended-info {
+    flex: 2;
+    padding-left: 15px;
+}
+
+.card-header.card-recommended span{
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .card-header.card-recommended::after {
@@ -875,6 +922,7 @@ main.open {
 
 .card-html ul li {
     color: #999999;
+    list-style: circle;
 }
 
 .card-html pre {
@@ -941,13 +989,14 @@ main.open {
     border-top: 1px solid #f1f1f1;
     width: 100%;
     float: left;
+    max-height: 3000px;
 }
 
 .card-footer-left {
     flex: 1 1 auto;
 }
 
-.card-footer-left button {
+.card-footer-left button, .card-recommended-info button {
     color: #999999;
     background-color: transparent;
     border: 0;
@@ -1034,7 +1083,6 @@ move {
 .card-accent {
     font-size: 4.5em;
     font-weight: 900;
-    color: #00baff;
 }
 
 form .card:first-of-type {
@@ -1044,6 +1092,31 @@ form .card:first-of-type {
 .card-view li {
     position: relative;
     list-style: none;
+}
+
+.click-more {
+    height: auto;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #00baff !important;
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.card-result-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.card-result-text p {
+    padding: 0 15px;
+}
+
+.card-result-text p:first-of-type {
+    border-right: 1px solid #f1f1f1;
 }
 
 /* ------------------------------- CUSTOM CARD --------------------------- */
@@ -1254,6 +1327,24 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input, md-input-c
     transform: rotate(180deg);
 }
 
+.click-more.ng-hide-add, .click-more.ng-hide-remove {
+    -webkit-transition: 1s ease-in-out; 
+    -moz-transition: 1s ease-in-out; 
+    -ms-transition: 1s ease-in-out; 
+    -o-transition: 1s ease-in-out; 
+    transition: 1s ease-in-out;
+}
+
+.click-more.ng-hide-add.ng-hide-add-active, .click-more.ng-hide-remove {
+    max-height: 0;
+    opacity: 0;
+}
+
+.click-more.ng-hide-add, .click-more.ng-hide-remove.ng-hide-remove-active {
+    max-height: 1000px;
+    opacity: 1;
+}
+
 .tooltip.ng-hide-add, .tooltip.ng-hide-remove {
     -webkit-transition: 1s; 
     -moz-transition: 1s; 
@@ -1271,6 +1362,26 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input, md-input-c
     opacity: 0;
     transform: translate(0, -10px);
 }
+
+.card-body.ng-hide-add, .card-footer.ng-hide-add, .card-body.ng-hide-remove, .card-footer.ng-hide-remove {
+    -webkit-transition: 1s; 
+    -moz-transition: 1s; 
+    -ms-transition: 1s; 
+    -o-transition: 1s; 
+    transition: 1s;
+}
+
+.card-body.ng-hide-remove, .card-footer-ng-hide-remove, .card-body.ng-hide-add.ng-hide-add-active, .card-footer.ng-hide-add.ng-hide-add-active {
+    max-height: 0;
+    opacity: 0;
+}
+
+.card-body.ng-hide-add, .card-footer-ng-hide-add, .card-body.ng-hide-remove.ng-hide-remove-active, .card-footer.ng-hide-remove.ng-hide-remove-active {
+    max-height: 3000px;
+    opacity: 1;
+}
+
+
 
 /*
 .header-title.ng-hide-add, .header-title.ng-hide-remove {

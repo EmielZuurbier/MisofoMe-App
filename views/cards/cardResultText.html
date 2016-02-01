@@ -1,7 +1,9 @@
-<p><strong>Uw laatste score is:</strong></p>
-<p><span class="card-accent">{{ results.amiTotal[0][4] }}</span> / 50</p>
-<a class="btn btn-block btn-line" href ng-click="clickMore=!clickMore">Meer info</a>
+<div class="card-result-text">
+    <p class="flex"><span class="card-accent" data-ng-class="amiResultsClass">{{ results.amiTotal[0][4] }}</span> / <strong>50</strong></p>
+    <p class="flex" data-ng-bind-html="trustAsHtml(amiResultsHeader)"></p>
+</div>
+<md-button class="btn-blue btn-block" data-ng-click="clickMore=!clickMore">Meer info</md-button>
+<!--<a class="btn btn-block btn-line" href ng-click="clickMore=!clickMore">Meer info</a>-->
 <div class="click-more" ng-show="clickMore">
-    <p><strong>{{ amiResultsHeader }}</strong></p>
     <p>{{ amiResultsBody }}</p>
 </div>

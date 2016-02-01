@@ -1,6 +1,6 @@
 <div class="custom-card-profile">
     <div class="card-body">
-        <img class="card-image card-image-round" src="http://placehold.it/100x100"/>
+        <img class="card-image card-image-round" src="media/profielfoto.png" style="width: 100px;"/>
         <h2> {{ user.name }} </h2>
         <p>dagen app gebruikt: 30 | oefeningen voltooid: 26</p>
     </div>
@@ -66,7 +66,7 @@
                             <md-checkbox data-ng-model="settingPref[2]" data-ng-true-value="'keel'" data-ng-false-value="''" aria-label="Checkbox" >
                                 Keelgeluiden
                             </md-checkbox>
-                            <md-checkbox data-ng-model="settingPref[3]" data-ng-true-value="'bepaalde'" data-ng-false-value="''" aria-label="Checkbox" >
+                            <md-checkbox data-ng-model="settingPref[3]" data-ng-true-value="'bepaald'" data-ng-false-value="''" aria-label="Checkbox" >
                                 Bepaalde Klanken
                             </md-checkbox>
                             <md-checkbox data-ng-model="settingPref[4]" data-ng-true-value="'herhaaldelijk'" data-ng-false-value="''" aria-label="Checkbox" >
@@ -95,7 +95,7 @@
                                 Anders, namelijk:
                             </md-checkbox>
                             <md-input-container class="md-block">
-                                <textarea data-ng-show="setting.a" data-ng-model="setting.f" class="form-control" rows="5" id="comment" aria-label="textarea"></textarea>
+                                <textarea data-ng-show="setting.e" data-ng-model="setting.f" class="form-control" rows="5" id="comment" aria-label="textarea"></textarea>
                             </md-input-container>
                         </fieldset>
                     </div>
@@ -118,7 +118,7 @@
                                 </md-select>
                             </md-input-container>
                             <md-input-container>
-                                <label>MoodMeter</label>
+                                <label>Stresstest</label>
                                 <md-select data-ng-model="setting.h">
                                     <md-option value="3x per dag">3x per dag</md-option>
                                     <md-option value="2x per dag">2x per dag</md-option>
